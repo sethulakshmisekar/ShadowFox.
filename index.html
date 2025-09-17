@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sethulakshmi | Portfolio</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #6C63FF;
+      --secondary: #FF6584;
+      --dark: #1A1A2E;
+      --light: #FFFFFF;
+      --gray: #F4F4F4;
+      --dark-gray: #797979;
+      --transition: all 0.3s ease-in-out;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background-color: var(--light);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    body.dark-mode {
+      background-color: var(--dark);
+      color: var(--light);
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      background: var(--primary);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .theme-toggle i {
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #4a44c9 100%);
+      color: white;
+      padding: 80px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      animation: fadeInDown 1s ease;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid rgba(255,255,255,0.3);
+      margin-bottom: 20px;
+      animation: zoomIn 1s ease;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+    }
+
+    nav h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: white;
+      transition: var(--transition);
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+      background-color: var(--light);
+      margin-top: -40px;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 2;
+    }
+
+    body.dark-mode section {
+      background-color: #25274D;
+      color: var(--light);
+    }
+
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      color: var(--primary);
+      position: relative;
+      text-align: center;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .education-item {
+      margin-bottom: 25px;
+      padding-left: 20px;
+      border-left: 3px solid var(--primary);
+    }
+
+    .education-item strong {
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .project {
+      background: var(--gray);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.dark-mode .project {
+      background: #2D2F5D;
+    }
+
+    .project::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 0;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .project:hover::before {
+      height: 100%;
+    }
+
+    .project:hover {
+      transform: translateY(-10px);
+    }
+
+    .project h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .skill-item {
+      background: var(--primary);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .skill-item:hover {
+      background: var(--secondary);
+      transform: scale(1.05);
+    }
+
+    a.resume-btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+      text-align: center;
+    }
+
+    a.resume-btn:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .achievement-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .achievement-item {
+      background: var(--gray);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    body.dark-mode .achievement-item {
+      background: #2D2F5D;
+    }
+
+    .achievement-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .achievement-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--dark);
+      color: white;
+      margin-top: 60px;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 999;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .about-content {
+        flex-direction: column;
+      }
+
+      section {
+        margin: -30px 15px 0;
+        padding: 40px 20px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="theme-toggle">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <header>
+    <nav>
+      <h1>SethuLakshmi S</h1>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-content">
+      <img src="sethupic.png" alt="Sethulakshmi" class="hero-img">
+      <h1>Sethulakshmi S</h1>
+      <p>B.Tech IT Student | Aspiring Software Engineer</p>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>
+          B.Tech IT student with strong foundations in programming and database management, passionate about building efficient software solutions and pursuing a career as a Software Engineer.
+        </p>
+        <p>
+          I enjoy solving complex problems and creating innovative solutions through code. When I'm not programming, you can find me playing chess or exploring new technologies.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="education-item">
+      <strong>Govt Girls Higher Secondary School, Chidambaram</strong><br>
+    </div>
+    <div class="education-item">
+      <strong>Kumaraguru College of Technology, Coimbatore</strong><br>
+      B.Tech Information Technology (2023 - 2027)<br>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Portfolio Projects</h2>
+    <div class="project-grid">
+      <div class="project">
+        <h3>Railway Station Database Management System</h3>
+        <p>
+          Designed a role-based system with Admin (password-protected) and Passenger modules. Admin manages trains, employees, and reports, while passengers can directly access train schedules. Ensured secure data access and simplified usability for both staff and passengers.
+        </p>
+      </div>
+      <div class="project">
+        <h3>E-Commerce Website</h3>
+        <p>
+          Developed a full-stack e-commerce platform with user authentication, product catalog, shopping cart, and payment integration using React and Node.js.
+        </p>
+      </div>
+      <div class="project">
+        <h3>Weather App</h3>
+        <p>
+          Created a responsive weather application that fetches real-time data from a weather API and displays forecasts with an intuitive UI.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-container">
+      <div class="skill-item"><i class="fas fa-code"></i> Data Structures</div>
+      <div class="skill-item"><i class="fab fa-cuttlefish"></i> C</div>
+      <div class="skill-item"><i class="fab fa-cuttlefish"></i> C++</div>
+      <div class="skill-item"><i class="fab fa-python"></i> Python</div>
+      <div class="skill-item"><i class="fas fa-cloud"></i> Cloud</div>
+      <div class="skill-item"><i class="fas fa-database"></i> MySQL</div>
+      <div class="skill-item"><i class="fab fa-html5"></i> HTML</div>
+      <div class="skill-item"><i class="fab fa-css3-alt"></i> CSS</div>
+      <div class="skill-item"><i class="fab fa-js-square"></i> JavaScript</div>
+      <div class="skill-item"><i class="fab fa-php"></i> PHP</div>
+      <div class="skill-item"><i class="fab fa-node-js"></i> Node.js</div>
+      <div class="skill-item"><i class="fab fa-java"></i> OOP in Java</div>
+      <div class="skill-item"><i class="fab fa-git-alt"></i> Git</div>
+      <div class="skill-item"><i class="fab fa-github"></i> GitHub</div>
+    </div>
+  </section>
+
+  <section id="resume">
+    <h2>Resume</h2>
+    <p style="text-align: center;">
+      <a href="myresume.pdf" class="resume-btn" download>
+        <i class="fas fa-download"></i> Download My Resume
+      </a>
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div>
+          <strong>Email</strong><br>
+          sethulakshmisekar@gmail.com
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div>
+          <strong>Address</strong><br>
+          277 -19, Thathampettai, Chidambaram, Cuddalore, Tamil Nadu - 608602
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fab fa-linkedin"></i>
+        </div>
+        <div>
+          <strong>LinkedIn</strong><br>
+          <a href="https://www.linkedin.com/in/sethulakshmi-s-4b2aba292" target="_blank" style="color: var(--primary);">Sethulakshmi</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-language"></i>
+        </div>
+        <div>
+          <strong>Languages Known</strong><br>
+          English, Tamil
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <h2>Achievements</h2>
+    <div class="achievement-list">
+      <div class="achievement-item">
+        <div class="achievement-icon">
+          <i class="fas fa-trophy"></i>
+        </div>
+        <h3>Chess Champion</h3>
+        <p>Winner (2x) – Zonal Level Chess, Coimbatore</p>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-icon">
+          <i class="fas fa-medal"></i>
+        </div>
+        <h3>Chess Tournament</h3>
+        <p>Runner-up & 3rd Prize – Centies Chess Tournament</p>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-icon">
+          <i class="fas fa-chess-knight"></i>
+        </div>
+        <h3>District Level</h3>
+        <p>Block & Taluk Winner, District Participant – Cuddalore Chess Competition</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Sethulakshmi. All rights reserved.</p>
+  </footer>
+
+  <a href="#" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script>
+    // Theme toggle functionality
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
+    
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      
+      if (body.classList.contains('dark-mode')) {
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      } else {
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      }
+    });
+    
+    // Back to top button
+    const backToTopButton = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        window.scrollTo({
+          top: targetElement.offsetTop - 20,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
